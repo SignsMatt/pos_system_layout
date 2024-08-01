@@ -18,8 +18,8 @@ class PromoSelector extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
-              Expanded(
-                flex: 6,
+              SizedBox(
+                width: 275,
                 child: Column(
                   children: [
                     Row(
@@ -41,10 +41,8 @@ class PromoSelector extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        const Expanded(
-                          child: RoundedThumbnailImage(
-                            imagePath: 'assets/images/pizza.jpg',
-                          ),
+                        const RoundedThumbnailImage(
+                          imagePath: 'assets/images/pizza.jpg',
                         ),
                         const SizedBox(
                           width: 10,
@@ -86,9 +84,11 @@ class PromoSelector extends StatelessWidget {
                             ),
                           ],
                         ),
-                        const Spacer(),
+                        const SizedBox(
+                          width: 20,
+                        ),
                         ExpandableButton(
-                          flex: 3,
+                          flex: 2,
                           fgColor: kUnlinkBtnFGColor,
                           bgColor: kUnlinkBtnBGColor,
                           text: 'Unlink',
@@ -99,7 +99,9 @@ class PromoSelector extends StatelessWidget {
                   ],
                 ),
               ),
-              const Spacer(),
+              const SizedBox(
+                width: 30,
+              ),
               Expanded(
                 flex: 12,
                 child: Column(

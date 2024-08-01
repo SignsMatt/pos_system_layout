@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class RoundedThumbnailImage extends StatelessWidget {
   const RoundedThumbnailImage({
@@ -10,15 +13,21 @@ class RoundedThumbnailImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(10),
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: 45,
+        maxHeight: 45,
       ),
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Image.asset(
-          imagePath,
-          fit: BoxFit.cover,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(10),
+        ),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Image.asset(
+            imagePath,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

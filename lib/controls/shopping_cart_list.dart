@@ -33,9 +33,7 @@ class ShoppingCartList extends StatelessWidget {
     return Expanded(
       child: ListView(
         children: [
-          ...shoppingCart
-              .map((e) => ShoppingCartListItem(purchase: e))
-              .toList(),
+          ...shoppingCart.map((e) => ShoppingCartListItem(purchase: e)),
         ],
       ),
     );
@@ -66,47 +64,92 @@ class ShoppingCartListItem extends StatelessWidget {
             width: 75,
             child: Text(purchase.item.name),
           ),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              elevation: 1,
-              foregroundColor: Colors.white,
-              backgroundColor: Colors.pinkAccent[200],
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-            ),
-            child: const Icon(Icons.delete),
-          ),
+          if (purchase.quantity == 1) DeleteButton() else SubtractButton(),
           Text('${purchase.quantity}'),
-          ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              elevation: 1,
-              foregroundColor: Colors.grey[700],
-              padding:
-                  const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-            ),
-            child: const Icon(Icons.add),
-          ),
+          AddButton(),
           SizedBox(
             width: 65,
             child: Text(
               '\$${(purchase.item.price * purchase.quantity).toStringAsFixed(2)}',
               textAlign: TextAlign.right,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class AddButton extends StatelessWidget {
+  const AddButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        elevation: 1,
+        foregroundColor: Colors.grey[700],
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+      ),
+      child: const Icon(Icons.add),
+    );
+  }
+}
+
+class SubtractButton extends StatelessWidget {
+  const SubtractButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        elevation: 1,
+        foregroundColor: Colors.grey[700],
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+      ),
+      child: const Icon(Icons.remove),
+    );
+  }
+}
+
+class DeleteButton extends StatelessWidget {
+  const DeleteButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        elevation: 1,
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.pinkAccent[200],
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 0),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+        ),
+      ),
+      child: const Icon(Icons.delete),
     );
   }
 }

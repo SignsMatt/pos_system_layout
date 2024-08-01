@@ -146,7 +146,12 @@ class CashlessCreditCard extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            const ExpandableButton(text: 'Cancel'),
+            ExpandableButton(
+              text: 'Cancel',
+              bgColor: kPromoBtnBGColor,
+              fgColor: kPromoBtnFGColor,
+              onPressed: () {},
+            ),
           ],
         ),
       ),
